@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  remote_user: grewald
+  remote_user: deep
   tasks:
   - name: Get Disk Space
     command: /home/grewald/script.sh
