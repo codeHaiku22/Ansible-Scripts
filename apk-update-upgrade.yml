@@ -1,0 +1,9 @@
+- hosts: all
+  remote_user: deep
+  become: yes
+  become_method: sudo
+  tasks:
+  - apk:
+      update_cache: yes
+  - apk:
+      upgrade: yes
