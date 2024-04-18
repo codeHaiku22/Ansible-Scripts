@@ -13,3 +13,18 @@
   - name: Remove dependencies that are no longer required
     apt:
       autoremove: yes      
+  - name: Remove useless packages from the cache
+    apt:
+      autoclean: yes      
+  - name: Install the package "foo"
+    apt:
+      name: foo
+  - name: Install a list of packages
+    apt:
+      pkg:
+      - foo
+      - foo-tools
+  - name: Remove "foo" package
+    apt:
+      name: foo
+      state: absent      
