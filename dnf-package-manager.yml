@@ -27,6 +27,12 @@
     dnf:
       name: foo
       state: latest
+
+  # Install the "foo" and "bar" packages
+  - name: Install "foo" and "bar" packages
+  - dnf:
+      name: foo,bar
+      state: present       
       
   # Remove "foo" package
   - name: Uninstall "foo" 
@@ -41,3 +47,9 @@
       name: foo
       state: absent
       autoremove: no      
+
+  # Remove "foo" and "bar" packages
+  - name: Uninstall "foo" and "bar" packages
+  - dnf:
+      name: foo,bar
+      state: absent        
