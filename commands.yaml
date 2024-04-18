@@ -1,0 +1,18 @@
+- hosts: all
+  remote_user: grewald
+  
+  tasks:
+
+  #Run a specific script 
+  - name: Get Disk Space
+    command: /home/grewald/script.sh
+
+  #Run a native command
+  - name: Get Memory
+    command: free -h
+
+  #Perform an update (for more control, use a specific Ansible module, if available)
+  - name: DNF Update
+    command: dnf update
+    become: yes
+    become_method: sudo
