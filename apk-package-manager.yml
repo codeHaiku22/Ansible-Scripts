@@ -1,0 +1,43 @@
+- hosts: all
+  remote_user: deep
+  become: yes
+  become_method: sudo
+
+  # Update repositories as a separate step
+  tasks:
+  - apk:
+      update_cache: yes
+
+  # Ugrade all packages
+  - apk:
+      upgrade: yes
+
+  # Install the package "foo"
+  - apk:
+      name: foo
+      state: present
+
+  # Install the packages "foo" and "bar"
+  - apk:
+      name: foo,bar
+      state: present
+
+  # Remove "foo" package
+  - apk:
+      name: foo
+      state: absent
+
+  # Remove "foo" and "bar" packages
+  - apk:
+      name: foo,bar
+      state: absent      
+      
+  # Update repositories and install "foo" package
+  - apk:
+      name: foo
+      update_cache: yes
+
+  # Update repositories and install "foo" and "bar" packages
+  - apk:
+      name: foo,bar
+      update_cache: yes      
