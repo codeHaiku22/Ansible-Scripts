@@ -1,0 +1,43 @@
+- hosts: all
+  remote_user: deep
+  become: yes
+  become_method: sudo
+  
+  tasks:
+  
+  # Update and ppgrade all packages as a separate step
+  - name: upgrade all packages
+    dnf:
+      name: "*"
+      state: latest  
+
+  # Remove unneeded dependencies
+  - name: Autoremove unneeded packages installed as dependencies
+    dnf:
+      autoremove: yes
+
+  # Install the package "foo" 
+  - name: Install the package "foo"
+    dnf:
+      name: httpd
+      state: present
+
+  # Install the latest version of the package "foo" 
+  - name: Install the latest version of "foo"
+    dnf:
+      name: httpd
+      state: latest
+      
+  # Remove "foo" package
+  - name: Uninstall "foo" 
+    dnf:
+      name: foo
+      state: absent
+      autoremove: yes   
+      
+  # Remove "foo" package but keep its dependencies
+  - name: Uninstall "foo" but keep its dependencies
+    dnf:
+      name: foo
+      state: absent
+      autoremove: no      
