@@ -2,29 +2,66 @@
   remote_user: deep
   become: yes
   become_method: sudo
+  
   tasks:
+
+  # Update repositories as a separate step
   - name: update 
     apt:
       update_cache: yes
+      
+  # Upgrade all packages    
   - name: Upgrade all packages to the latest version
     apt:
       name: "*"
       state: latest
+
+  # Remove unneeded dependencies      
   - name: Remove dependencies that are no longer required
     apt:
       autoremove: yes      
+
+  # Remove unneeded packages from cache
   - name: Remove useless packages from the cache
     apt:
       autoclean: yes      
+
+  # Install the package "foo"
   - name: Install the package "foo"
     apt:
       name: foo
+
+  # Install the packages "foo" and "foo-tools"
   - name: Install a list of packages
     apt:
       pkg:
       - foo
       - foo-tools
+
+  # Remove "foo" package      
   - name: Remove "foo" package
     apt:
       name: foo
       state: absent      
+
+  # Remove "foo" and "foo-tools" packages
+  - name: Remove "foo" and "foo-tools" packages
+    apt:
+      pkg:
+      - foo
+      - foo-tools
+      state: absent           
+
+  # Update repositories and install "foo" package
+  - name: Update repositories cache and install "foo" package
+  - apt:
+      name: foo
+      update_cache: yes
+
+  # Update repositories and install "foo" and "foo-tools" packages
+  - name: Update repositories cache and install "foo" and "foo-tools" packages
+  - apt:
+      pkg:
+      - foo
+      - foo-tools
+      update_cache: yes        
