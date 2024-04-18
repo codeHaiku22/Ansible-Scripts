@@ -19,13 +19,13 @@
   # Install the package "foo" 
   - name: Install the package "foo"
     dnf:
-      name: httpd
+      name: foo
       state: present
 
   # Install the latest version of the package "foo" 
   - name: Install the latest version of "foo"
     dnf:
-      name: httpd
+      name: foo
       state: latest
       
   # Remove "foo" package
