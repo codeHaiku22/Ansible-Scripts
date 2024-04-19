@@ -1,5 +1,5 @@
 # Ansible-Scripts
-This is a private repository of Ansible scripts.
+This is a repository of Ansible scripts.
 
 ## Useful Links
 [Intro to Playbooks](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_intro.html) <br/>
